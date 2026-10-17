@@ -4,7 +4,7 @@ cd /d "%~dp0"
 title Convertitore Universale Desktop
 
 echo ========================================================
-echo       CONVERTIO DESKTOP - CONVERTITORE UNIVERSALE       
+echo       UNIVERSAL FILE CONVERTER - CONVERTITORE UNIVERSALE       
 echo ========================================================
 echo.
 echo Controllo ambiente Python in corso...
@@ -54,7 +54,7 @@ exit /b 1
 :START_APP
 echo [OK] Python rilevato: %PY_CMD%
 echo.
-echo Avvio interfaccia Convertio Desktop...
+echo Avvio interfaccia Universal File Converter...
 "%PY_CMD%" main.py %*
 
 if %errorlevel% neq 0 (

@@ -1,5 +1,5 @@
 """
-Punto di ingresso principale per Convertio Desktop Portable.
+Punto di ingresso principale per Universal File Converter Portable.
 Riconosce automaticamente l'ambiente:
 - Se l'ambiente ha già le librerie grafiche moderne (CustomTkinter), avvia l'interfaccia completa.
 - Se si trova su un PC con solo Python standard di base, avvia un bootstrapper grafico nativo
@@ -24,7 +24,7 @@ def run_native_bootstrapper():
     import subprocess
 
     root = tk.Tk()
-    root.title("Convertio Desktop - Preparazione Portatile")
+    root.title("Universal File Converter - Preparazione Portatile")
     root.geometry("560x420")
     root.resizable(False, False)
     root.configure(bg="#181825")
@@ -40,7 +40,7 @@ def run_native_bootstrapper():
 
     tk.Label(
         hdr,
-        text="Convertio Desktop Portable",
+        text="Universal File Converter Portable",
         font=("Segoe UI", 16, "bold"),
         fg="#e53935",
         bg="#1e1e2e"
@@ -165,7 +165,7 @@ def run_native_bootstrapper():
 
 def main():
     if "--check" in sys.argv:
-        print("[OK] Convertio Desktop pronto all'avvio!")
+        print("[OK] Universal File Converter pronto all'avvio!")
         return
 
     if check_gui_available():

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convertio Desktop — Convertitore Universale Reale (Windows, macOS, Linux)</title>
+    <title>Universal File Converter — Convertitore Universale Reale (Windows, macOS, Linux)</title>
     <meta name="description" content="Il convertitore universale desktop open-source. Decodifica e ricodifica reale di flussi binari per Immagini, Video, Audio, Dati e Documenti su Windows, macOS e Linux.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -723,7 +723,7 @@
         <nav>
             <a href="#" class="logo">
                 <div class="logo-icon">⚡</div>
-                Convertio Desktop
+                Universal File Converter
             </a>
             <ul class="nav-links">
                 <li><a href="#simulator">Simulatore</a></li>
@@ -731,7 +731,7 @@
                 <li><a href="#confronto">Perché è Reale</a></li>
                 <li><a href="#installazione">Download & Avvio</a></li>
             </ul>
-            <a href="https://github.com" target="_blank" class="btn-header">
+            <a href="https://github.com/Marc90F/universal-file-converter" target="_blank" class="btn-header">
                 ⭐ GitHub Repo
             </a>
         </nav>
@@ -749,8 +749,8 @@
             </p>
 
             <div class="hero-actions">
-                <a href="#installazione" class="btn-primary">
-                    ⬇ Scarica / Avvia Subito
+                <a href="universal-file-converter-v1.0.0.zip" download="universal-file-converter-v1.0.0.zip" class="btn-primary">
+                    ⬇ Scarica Release v1.0.0 (.ZIP)
                 </a>
                 <a href="#simulator" class="btn-secondary">
                     🎮 Prova il Simulatore Interattivo
@@ -773,14 +773,14 @@
                         <div class="dot-w dot-yellow"></div>
                         <div class="dot-w dot-green"></div>
                     </div>
-                    <div class="window-title">Convertio Desktop — Anteprima Interattiva</div>
+                    <div class="window-title">Universal File Converter — Anteprima Interattiva</div>
                     <div style="width: 48px;"></div>
                 </div>
 
                 <div class="simulator-body">
                     <div class="sim-header">
                         <div>
-                            <span style="font-weight: 800; color: #e53935; font-size: 1.1rem;">CONVERTIO DESKTOP</span>
+                            <span style="font-weight: 800; color: #e53935; font-size: 1.1rem;">UNIVERSAL FILE CONVERTER</span>
                             <span style="font-size: 0.8rem; color: #94a3b8; display: block;">Decodifica & Ricodifica Reale Multithread</span>
                         </div>
                         <div class="sim-chips">
@@ -872,7 +872,7 @@
         <section class="engines-section" id="motori">
             <div class="section-header">
                 <h2>I 4 Motori di Decodifica & Ricodifica</h2>
-                <p>Nessuna singola libreria può fare tutto. Convertio Desktop orchestra quattro motori d'élite per la massima fedeltà e compatibilità.</p>
+                <p>Nessuna singola libreria può fare tutto. Universal File Converter orchestra quattro motori d'élite per la massima fedeltà e compatibilità.</p>
             </div>
 
             <div class="engines-grid">
@@ -947,7 +947,7 @@
                     </div>
 
                     <div class="comp-card good">
-                        <h3>✅ Convertio Desktop (Vera ricodifica)</h3>
+                        <h3>✅ Universal File Converter (Vera ricodifica)</h3>
                         <ul class="comp-list">
                             <li>✨ <strong>Demuxing & Decoding:</strong> Scompatta i flussi e decodifica i dati in matrici e campioni non compressi in RAM.</li>
                             <li>✨ <strong>Compositing & Resampling:</strong> Applica filtri cromatici, campionamento PCM a virgola mobile, o ricostruzione XML tabelle.</li>
@@ -973,8 +973,11 @@
 
             <!-- Tab Windows -->
             <div class="os-content active" id="tab-win">
-                <h3 style="margin-bottom: 8px;">Avvio su Windows (10 / 11)</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Fai doppio clic sul file batch oppure avvialo da terminale CMD/PowerShell:</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+                    <h3 style="margin: 0;">Avvio su Windows (10 / 11)</h3>
+                    <a href="universal-file-converter-v1.0.0.zip" download class="btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">⬇ Scarica Pacchetto Completo (.ZIP)</a>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Estrai lo ZIP e fai doppio clic su <strong>run.bat</strong>:</p>
                 <div class="terminal-block">
                     run.bat
                 </div>
@@ -985,8 +988,11 @@
 
             <!-- Tab macOS -->
             <div class="os-content" id="tab-mac">
-                <h3 style="margin-bottom: 8px;">Avvio su macOS (M1/M2/M3/M4 & Intel)</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Rendi eseguibile lo script di avvio ed eseguilo dal Terminale:</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+                    <h3 style="margin: 0;">Avvio su macOS (M1/M2/M3/M4 & Intel)</h3>
+                    <a href="universal-file-converter-v1.0.0.zip" download class="btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">⬇ Scarica Pacchetto macOS (.ZIP)</a>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Estrai lo ZIP, apri il Terminale nella cartella ed esegui:</p>
                 <div class="terminal-block">
                     chmod +x run.sh<br>
                     ./run.sh
@@ -998,8 +1004,11 @@
 
             <!-- Tab Linux -->
             <div class="os-content" id="tab-linux">
-                <h3 style="margin-bottom: 8px;">Avvio su Linux (Debian, Ubuntu, Fedora, Arch)</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Esegui lo script shell nativo per la tua distribuzione:</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+                    <h3 style="margin: 0;">Avvio su Linux (Debian, Ubuntu, Fedora, Arch)</h3>
+                    <a href="universal-file-converter-v1.0.0.zip" download class="btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">⬇ Scarica Pacchetto Linux (.ZIP)</a>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Estrai lo ZIP ed esegui lo script shell nativo:</p>
                 <div class="terminal-block">
                     chmod +x run.sh<br>
                     ./run.sh
@@ -1013,7 +1022,7 @@
         <!-- Footer -->
         <footer>
             <div class="container">
-                <p><strong>Convertio Desktop</strong> &bull; Progetto Open Source rilasciato sotto Licenza MIT.</p>
+                <p><strong>Universal File Converter</strong> &bull; Progetto Open Source rilasciato sotto Licenza MIT.</p>
                 <p style="margin-top: 8px;">100% Locale &bull; Nessun dato inviato al cloud &bull; Sviluppato in Python</p>
             </div>
         </footer>

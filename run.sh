@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ========================================================
-#       CONVERTIO DESKTOP - CONVERTITORE UNIVERSALE       
+#       UNIVERSAL FILE CONVERTER - CONVERTITORE UNIVERSALE       
 #       Launcher per macOS (Apple Silicon & Intel) & Linux
 # ========================================================
 
@@ -11,7 +11,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
 echo "========================================================"
-echo "      CONVERTIO DESKTOP - CONVERTITORE UNIVERSALE       "
+echo "      UNIVERSAL FILE CONVERTER - CONVERTITORE UNIVERSALE       "
 echo "      macOS (Apple Silicon & Intel) & Linux             "
 echo "========================================================"
 echo ""
@@ -62,5 +62,5 @@ fi
 
 # 3. Avvio dell'applicazione
 echo ""
-echo "Avvio di Convertio Desktop..."
+echo "Avvio di Universal File Converter..."
 exec "$PY_CMD" main.py "$@"

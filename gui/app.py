@@ -55,7 +55,7 @@ class UniversalConverterApp(ctk.CTk):
 
         title_lbl = ctk.CTkLabel(
             logo_frame,
-            text="CONVERTIO DESKTOP",
+            text="UNIVERSAL FILE CONVERTER",
             font=ctk.CTkFont(family="Segoe UI", size=20, weight="bold"),
             text_color="#e53935"
         )

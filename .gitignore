@@ -38,7 +38,11 @@ venv.bak/
 # Binari locali pesanti (scaricati a runtime tramite il downloader integrato)
 bin/ffmpeg.exe
 bin/ffprobe.exe
+bin/ffmpeg
+bin/ffprobe
 bin/*.zip
+*.zip
+!docs/*.zip
 
 # File temporanei di test / output utente
 *.tmp
