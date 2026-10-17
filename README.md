@@ -1,4 +1,4 @@
-# 🔄 Convertio Desktop — Convertitore Universale Reale
+# 🔄 Universal File Converter - Convertitore universale
 ### Per Windows, macOS (Apple Silicon & Intel) e Linux
 
 Un vero convertitore desktop universale ispirato a Convertio, scritto in Python.
