@@ -71,6 +71,9 @@ android.allow_backup = True
 # (bool) Automatically accept SDK license
 android.accept_sdk_license = True
 
+# (str) python-for-android branch or tag to use (Python 3.11 LTS compatibile con Kivy)
+p4a.branch = v2024.01.21
+
 [buildozer]
 
 # (int) Log level (0 = error only, 1 = info, 2 = debug with compiler output)
