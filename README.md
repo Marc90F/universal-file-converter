@@ -4,7 +4,7 @@
 Un vero convertitore desktop universale ispirato a Convertio, scritto in Python.
 A differenza di script che si limitano a rinominare l'estensione del file, questo software **decodifica realmente i flussi binari non compressi in memoria RAM e li ricodifica da zero** nel nuovo formato con algoritmi dedicati.
 
-🌐 **Sito Web Vetrina Ufficiale**: Incluso nella cartella [`docs/index.html`](docs/index.html) (pronto per **GitHub Pages** con simulatore interattivo!).
+🌐 **Sito Web Vetrina Ufficiale**: https://marc90f.github.io/universal-file-converter.
 
 ---
 
