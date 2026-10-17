@@ -1,5 +1,5 @@
 # 🔄 Universal File Converter — Convertitore Universale Reale
-### Per Windows, macOS (Apple Silicon & Intel) e Linux
+### Per Windows, macOS (Apple Silicon & Intel), Linux e Android!
 
 Un vero convertitore desktop universale ispirato a Convertio, scritto in Python.
 A differenza di script che si limitano a rinominare l'estensione del file, questo software **decodifica realmente i flussi binari non compressi in memoria RAM e li ricodifica da zero** nel nuovo formato con algoritmi dedicati.
