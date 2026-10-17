@@ -9,13 +9,17 @@ on:
       - 'android/**'
       - 'core/**'
       - 'engines/**'
+      - 'main.py'
       - 'buildozer.spec'
       - '.github/workflows/build-android.yml'
+
+permissions:
+  contents: write
 
 jobs:
   build:
     name: Build Multi-Architecture Android APK
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout Repository
@@ -37,20 +41,21 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             git zip unzip autoconf libtool pkg-config zlib1g-dev \
-            libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
+            libncurses-dev cmake libffi-dev libssl-dev ccache
 
-      - name: Install Buildozer & Cython
+      - name: Install Buildozer & Dependencies
         run: |
-          pip install --upgrade pip
-          pip install --upgrade Cython==0.29.36 buildozer
+          python -m pip install --upgrade pip
+          pip install --upgrade Cython==0.29.36 buildozer virtualenv
 
       - name: Build Android APK with Buildozer
         run: |
-          # Build APK per arm64-v8a, armeabi-v7a, x86_64
+          # Compila l'APK universale per ARM64-v8a e ARMv7
           buildozer android debug
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: UniversalFileConverter-Android-APK
           path: bin/*.apk
@@ -59,9 +64,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Trova l'APK compilato e assegna un nome standard
-          APK_FILE=$(ls bin/*.apk | head -n 1)
-          if [ -f "$APK_FILE" ]; then
+          # Individua l'APK compilato e caricalo sulla Release v1.0.0
+          APK_FILE=$(ls bin/*.apk 2>/dev/null | head -n 1)
+          if [ -n "$APK_FILE" ] && [ -f "$APK_FILE" ]; then
+            echo "Trovato APK compilato: $APK_FILE"
             cp "$APK_FILE" universal-file-converter-v1.0.0.apk
-            gh release upload v1.0.0 universal-file-converter-v1.0.0.apk --clobber || true
+            gh release upload v1.0.0 universal-file-converter-v1.0.0.apk --clobber
+            echo "APK caricato con successo sulla Release v1.0.0!"
+          else
+            echo "Nessun file APK trovato in bin/"
+            exit 1
           fi

@@ -29,7 +29,7 @@ version = 1.0.0
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.3.0,pillow,openpyxl,reportlab,python-docx,certifi,plyer
+requirements = python3,kivy==2.3.0,pillow,openpyxl,plyer,certifi
 
 # (str) Presplash of the application
 #presplash.filename = %(source.dir)s/data/presplash.png
@@ -62,14 +62,14 @@ android.ndk = 25b
 # (bool) Use --private data storage (True) or --dir public storage (False)
 android.private_storage = True
 
-# (list) The Android architectures to build for (all major architectures)
-android.archs = arm64-v8a, armeabi-v7a, x86_64
+# (list) The Android architectures to build for (ARM 64-bit e 32-bit per tutti gli smartphone Android)
+android.archs = arm64-v8a, armeabi-v7a
 
 # (bool) Allow backup of app data
 android.allow_backup = True
 
-# (str) Entry point for Python
-android.entrypoint = android/main.py
+# (bool) Automatically accept SDK license
+android.accept_sdk_license = True
 
 [buildozer]
 

@@ -1,13 +1,20 @@
 """
 Punto di ingresso principale per Universal File Converter Portable.
 Riconosce automaticamente l'ambiente:
-- Se l'ambiente ha già le librerie grafiche moderne (CustomTkinter), avvia l'interfaccia completa.
+- Se avviato su dispositivo Android, carica l'interfaccia touch Kivy Mobile.
+- Se l'ambiente ha già le librerie grafiche moderne (CustomTkinter), avvia l'interfaccia completa desktop.
 - Se si trova su un PC con solo Python standard di base, avvia un bootstrapper grafico nativo
   (usando solo il modulo integrato 'tkinter') che permette all'utente di preparare tutto con 1 clic.
 """
 
 import os
 import sys
+
+# Riconoscimento immediato ambiente Android (Kivy / python-for-android)
+if "ANDROID_ARGUMENT" in os.environ or "ANDROID_BOOTSTRAP" in os.environ or hasattr(sys, "getandroidapilevel") or "PYTHON_SERVICE_ARGUMENT" in os.environ:
+    from android.main import UniversalConverterMobileApp
+    UniversalConverterMobileApp().run()
+    sys.exit(0)
 
 def check_gui_available() -> bool:
     try:
