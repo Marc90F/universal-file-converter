@@ -1,0 +1,25 @@
+# Convertitore Universale Desktop - Dipendenze Motori di Conversione
+
+# Interfaccia Grafica Moderna e Monitoraggio
+customtkinter>=5.2.0
+psutil>=5.9.0
+
+# Motore 1: Immagini (Decodifica matrice di pixel, canali colore, HEIF Apple/Samsung)
+Pillow>=10.0.0
+pillow-heif>=0.14.0
+
+# Motore 2: Dati e Tabelle (Parsing DataFrame e serializzazione OpenXML)
+pandas>=2.0.0
+openpyxl>=3.1.0
+
+# Motore 3: Documenti (Ricostruzione vettoriale PDF/DOCX, ReportLab e PyMuPDF)
+pdf2docx>=0.5.8
+docx2pdf>=0.1.8
+pymupdf>=1.23.0
+python-docx>=1.0.0
+reportlab>=4.0.0
+
+# Nota su Audio e Video:
+# Il motore multimediale utilizza FFmpeg. Se non è presente nel PATH del sistema,
+# l'applicazione include un downloader integrato 1-click che scarica automaticamente
+# la versione portable ufficiale di FFmpeg per Windows direttamente nella cartella bin/.

@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertio Desktop — Convertitore Universale Reale (Windows, macOS, Linux)</title>
+    <meta name="description" content="Il convertitore universale desktop open-source. Decodifica e ricodifica reale di flussi binari per Immagini, Video, Audio, Dati e Documenti su Windows, macOS e Linux.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a10;
+            --bg-card: #13131f;
+            --bg-card-hover: #1a1a2e;
+            --border-color: #27273a;
+            --primary: #e53935;
+            --primary-glow: rgba(229, 57, 53, 0.35);
+            --primary-hover: #ff5252;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-green: #10b981;
+            --accent-blue: #38bdf8;
+            --accent-purple: #a855f7;
+            --accent-amber: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Effetti Glow Sfondo */
+        .glow-sphere {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-glow) 0%, rgba(10,10,16,0) 70%);
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(60px);
+        }
+
+        /* Container Generale */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 16, 0.8);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #e53935, #ff1744);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 14px var(--primary-glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .btn-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1e1e2e;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-header:hover {
+            border-color: #474763;
+            background: #252538;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 90px 0 60px;
+            text-align: center;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(229, 57, 53, 0.12);
+            color: #ff8a80;
+            border: 1px solid rgba(229, 57, 53, 0.3);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .badge-pill span.dot {
+            width: 8px;
+            height: 8px;
+            background: #e53935;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #e53935;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #ffffff 30%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.lead {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 760px;
+            margin: 0 auto 36px;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            box-shadow: 0 8px 24px var(--primary-glow);
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(229, 57, 53, 0.5);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-card);
+            color: #fff;
+            padding: 14px 26px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            transition: all 0.25s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: #474763;
+        }
+
+        .platforms-chip-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .platform-chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Simulatore UI Interattivo Desktop */
+        .simulator-wrapper {
+            margin: 40px auto 100px;
+            max-width: 980px;
+            background: #11111b;
+            border-radius: 16px;
+            border: 1px solid #313244;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 40px rgba(229, 57, 53, 0.15);
+            overflow: hidden;
+        }
+
+        .window-header {
+            background: #181825;
+            padding: 12px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #27273a;
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot-w {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .window-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #a6adc8;
+        }
+
+        .simulator-body {
+            padding: 24px;
+        }
+
+        .sim-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .sim-chips {
+            display: flex;
+            gap: 8px;
+            font-size: 0.8rem;
+        }
+
+        .sim-chip {
+            background: #1e1e2e;
+            padding: 4px 10px;
+            border-radius: 6px;
+            color: #a6e3a1;
+            font-weight: 600;
+            border: 1px solid #313244;
+        }
+
+        .sim-dropzone {
+            background: #181825;
+            border: 2px dashed #313244;
+            border-radius: 12px;
+            padding: 28px;
+            text-align: center;
+            margin-bottom: 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sim-dropzone:hover {
+            border-color: var(--primary);
+            background: #1e1e2e;
+        }
+
+        .sim-file-card {
+            background: #181825;
+            border: 1px solid #27273a;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sim-file-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sim-file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sim-file-icon {
+            font-size: 1.6rem;
+        }
+
+        .sim-file-meta strong {
+            display: block;
+            font-size: 0.95rem;
+            color: #fff;
+        }
+
+        .sim-file-meta span {
+            font-size: 0.8rem;
+            color: #a6adc8;
+        }
+
+        .sim-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sim-select {
+            background: #313244;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .sim-btn-explain {
+            background: #2b2d42;
+            color: #89dceb;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .sim-btn-explain:hover {
+            background: #3d405b;
+        }
+
+        .sim-btn-play {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .sim-pbar-bg {
+            height: 6px;
+            background: #313244;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .sim-pbar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e53935, #ff5252);
+            width: 68%;
+            border-radius: 4px;
+            transition: width 0.4s;
+        }
+
+        /* 4 Motori Section */
+        .engines-section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-header h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .engines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 24px;
+        }
+
+        .engine-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 28px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .engine-card:hover {
+            border-color: #474763;
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
+        }
+
+        .engine-card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .engine-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .engine-card-engine {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.12);
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 14px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .engine-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .format-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .format-tag {
+            background: #1e1e2e;
+            border: 1px solid #2e2e42;
+            color: #cbd5e1;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Confronto Tecnico (Perché non basta rinominare) */
+        .comparison-section {
+            padding: 80px 0;
+            background: rgba(19, 19, 31, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .comparison-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .comp-card {
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .comp-card.bad {
+            background: rgba(239, 68, 68, 0.05);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .comp-card.good {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15);
+        }
+
+        .comp-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            margin-bottom: 14px;
+        }
+
+        .comp-card.bad h3 { color: #f87171; }
+        .comp-card.good h3 { color: #34d399; }
+
+        .comp-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+        }
+
+        .comp-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        /* Istruzioni di Avvio Multi-OS */
+        .install-section {
+            padding: 90px 0;
+        }
+
+        .os-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .os-tab-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .os-tab-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 4px 14px var(--primary-glow);
+        }
+
+        .os-content {
+            display: none;
+            max-width: 780px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 32px;
+        }
+
+        .os-content.active {
+            display: block;
+        }
+
+        .terminal-block {
+            background: #0b0b13;
+            border: 1px solid #27273a;
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #89dceb;
+            font-size: 0.9rem;
+            margin: 16px 0;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        /* Modale Informativa Simulatore */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-box {
+            background: #181825;
+            border: 1px solid #313244;
+            border-radius: 14px;
+            max-width: 600px;
+            width: 90%;
+            padding: 28px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        .modal-box h4 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .modal-box p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+
+        .btn-modal-close {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            float: right;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #f8fafc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.4rem; }
+            .comparison-cards { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-sphere"></div>
+
+    <div class="container">
+        <!-- Navbar -->
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon">⚡</div>
+                Convertio Desktop
+            </a>
+            <ul class="nav-links">
+                <li><a href="#simulator">Simulatore</a></li>
+                <li><a href="#motori">I 4 Motori</a></li>
+                <li><a href="#confronto">Perché è Reale</a></li>
+                <li><a href="#installazione">Download & Avvio</a></li>
+            </ul>
+            <a href="https://github.com" target="_blank" class="btn-header">
+                ⭐ GitHub Repo
+            </a>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="badge-pill">
+                <span class="dot"></span>
+                v1.0.0 &bull; 100% Locale &bull; Windows, macOS & Linux
+            </div>
+            <h1>Il Convertitore Universale Reale<br>Direttamente sul tuo PC</h1>
+            <p class="lead">
+                Basta attendere code lente sui siti cloud o usare convertitori ingannevoli che cambiano solo l'estensione.
+                Decodifica e ricodifica reale dei flussi binari per Immagini, Video, Audio, Dati e Documenti.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#installazione" class="btn-primary">
+                    ⬇ Scarica / Avvia Subito
+                </a>
+                <a href="#simulator" class="btn-secondary">
+                    🎮 Prova il Simulatore Interattivo
+                </a>
+            </div>
+
+            <div class="platforms-chip-group">
+                <div class="platform-chip">🪟 Windows (run.bat)</div>
+                <div class="platform-chip">🍎 macOS M1/M2/M3 & Intel (run.sh)</div>
+                <div class="platform-chip">🐧 Linux Ubuntu/Debian/Fedora/Arch (run.sh)</div>
+            </div>
+        </section>
+
+        <!-- Simulatore Interattivo App -->
+        <section id="simulator">
+            <div class="simulator-wrapper">
+                <div class="window-header">
+                    <div class="window-dots">
+                        <div class="dot-w dot-red"></div>
+                        <div class="dot-w dot-yellow"></div>
+                        <div class="dot-w dot-green"></div>
+                    </div>
+                    <div class="window-title">Convertio Desktop — Anteprima Interattiva</div>
+                    <div style="width: 48px;"></div>
+                </div>
+
+                <div class="simulator-body">
+                    <div class="sim-header">
+                        <div>
+                            <span style="font-weight: 800; color: #e53935; font-size: 1.1rem;">CONVERTIO DESKTOP</span>
+                            <span style="font-size: 0.8rem; color: #94a3b8; display: block;">Decodifica & Ricodifica Reale Multithread</span>
+                        </div>
+                        <div class="sim-chips">
+                            <span class="sim-chip">🖼️ Immagini: OK ✓</span>
+                            <span class="sim-chip">🎬 Media: OK ✓</span>
+                            <span class="sim-chip">📊 Dati: OK ✓</span>
+                            <span class="sim-chip">📄 Documenti: OK ✓</span>
+                        </div>
+                    </div>
+
+                    <div class="sim-dropzone" onclick="simulateNewFile()">
+                        <div style="font-size: 2rem; margin-bottom: 4px;">📂</div>
+                        <strong style="color: #fff;">Clicca qui per simulare l'aggiunta di un file dal PC</strong>
+                        <p style="font-size: 0.85rem; color: #89b4fa; margin-top: 4px;">Supporta PNG, JPG, WEBP, HEIC, MP4, MKV, MP3, WAV, CSV, XLSX, JSON, PDF, DOCX</p>
+                    </div>
+
+                    <!-- File Cards Demo -->
+                    <div id="simCardsContainer">
+                        <!-- Card 1: Video MP4 -->
+                        <div class="sim-file-card" id="card1">
+                            <div class="sim-file-top">
+                                <div class="sim-file-info">
+                                    <div class="sim-file-icon">🎬</div>
+                                    <div class="sim-file-meta">
+                                        <strong>trailer_vacanze_4k.mp4</strong>
+                                        <span>48.2 MB &bull; Video H.264 / AAC</span>
+                                    </div>
+                                </div>
+                                <div class="sim-controls">
+                                    <span style="font-size: 0.85rem; color: #a6adc8;">in</span>
+                                    <select class="sim-select" id="target1">
+                                        <option value="mp3">MP3</option>
+                                        <option value="mkv">MKV</option>
+                                        <option value="webm">WEBM</option>
+                                        <option value="gif">GIF Animata</option>
+                                        <option value="wav">WAV</option>
+                                    </select>
+                                    <button class="sim-btn-explain" onclick="showExplanation('mp4', document.getElementById('target1').value)">💡 Come Funziona</button>
+                                    <button class="sim-btn-play" id="btnPlay1" onclick="runSimulation('card1', 'btnPlay1', 'pbar1', 'status1')">▶</button>
+                                </div>
+                            </div>
+                            <div class="sim-pbar-bg">
+                                <div class="sim-pbar-fill" id="pbar1" style="width: 0%;"></div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #a6adc8;">
+                                <span id="status1">Pronto per la ricodifica</span>
+                                <span>FFmpeg Subprocess Core</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Foto HEIC -->
+                        <div class="sim-file-card" id="card2">
+                            <div class="sim-file-top">
+                                <div class="sim-file-info">
+                                    <div class="sim-file-icon">🖼️</div>
+                                    <div class="sim-file-meta">
+                                        <strong>foto_iphone_ritratto.heic</strong>
+                                        <span>3.8 MB &bull; High Efficiency Image Container (Apple)</span>
+                                    </div>
+                                </div>
+                                <div class="sim-controls">
+                                    <span style="font-size: 0.85rem; color: #a6adc8;">in</span>
+                                    <select class="sim-select" id="target2">
+                                        <option value="jpg">JPG</option>
+                                        <option value="png">PNG</option>
+                                        <option value="webp">WEBP</option>
+                                        <option value="ico">ICO (Multi-res)</option>
+                                        <option value="pdf">PDF</option>
+                                    </select>
+                                    <button class="sim-btn-explain" onclick="showExplanation('heic', document.getElementById('target2').value)">💡 Come Funziona</button>
+                                    <button class="sim-btn-play" id="btnPlay2" onclick="runSimulation('card2', 'btnPlay2', 'pbar2', 'status2')">▶</button>
+                                </div>
+                            </div>
+                            <div class="sim-pbar-bg">
+                                <div class="sim-pbar-fill" id="pbar2" style="width: 0%;"></div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #a6adc8;">
+                                <span id="status2">Pronto per la decodifica dei piani colore</span>
+                                <span>Pillow + pillow-heif</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione 4 Motori Specializzati -->
+        <section class="engines-section" id="motori">
+            <div class="section-header">
+                <h2>I 4 Motori di Decodifica & Ricodifica</h2>
+                <p>Nessuna singola libreria può fare tutto. Convertio Desktop orchestra quattro motori d'élite per la massima fedeltà e compatibilità.</p>
+            </div>
+
+            <div class="engines-grid">
+                <!-- Immagini -->
+                <div class="engine-card">
+                    <div class="engine-card-icon">🖼️</div>
+                    <h3>Immagini Raster</h3>
+                    <div class="engine-card-engine">Pillow + pillow-heif</div>
+                    <p>Decodifica matrici di pixel raw. Gestisce la trasparenza (compositing Alpha su sfondo bianco per JPEG/BMP) e genera frame multi-risoluzione per icone Windows/macOS.</p>
+                    <div class="format-tags">
+                        <span class="format-tag">PNG</span><span class="format-tag">JPG</span><span class="format-tag">WEBP</span>
+                        <span class="format-tag">BMP</span><span class="format-tag">ICO</span><span class="format-tag">TIFF</span>
+                        <span class="format-tag">GIF</span><span class="format-tag">HEIC</span>
+                    </div>
+                </div>
+
+                <!-- Audio/Video -->
+                <div class="engine-card">
+                    <div class="engine-card-icon">🎬</div>
+                    <h3>Audio & Video</h3>
+                    <div class="engine-card-engine">FFmpeg Subprocess Core</div>
+                    <p>Demuxing di contenitori MP4/MKV/WebM, isolamento flussi audio/video e ricodifica con codec H.264, VP9, LAME MP3, AAC e PCM non compresso. GIF a 2 passaggi.</p>
+                    <div class="format-tags">
+                        <span class="format-tag">MP4</span><span class="format-tag">MKV</span><span class="format-tag">AVI</span>
+                        <span class="format-tag">MOV</span><span class="format-tag">WEBM</span><span class="format-tag">MP3</span>
+                        <span class="format-tag">WAV</span><span class="format-tag">FLAC</span><span class="format-tag">AAC</span>
+                    </div>
+                </div>
+
+                <!-- Dati -->
+                <div class="engine-card">
+                    <div class="engine-card-icon">📊</div>
+                    <h3>Dati & Tabelle</h3>
+                    <div class="engine-card-engine">Pandas + OpenPyXL</div>
+                    <p>Parsing semantico in memoria RAM (DataFrame). Riconoscimento delimitatori automatico ed esportazione formattata in file Excel nativi OpenXML, HTML con CSS o XML gerarchico.</p>
+                    <div class="format-tags">
+                        <span class="format-tag">CSV</span><span class="format-tag">XLSX</span><span class="format-tag">JSON</span>
+                        <span class="format-tag">HTML</span><span class="format-tag">XML</span><span class="format-tag">TSV</span>
+                    </div>
+                </div>
+
+                <!-- Documenti -->
+                <div class="engine-card">
+                    <div class="engine-card-icon">📄</div>
+                    <h3>Documenti PDF/Word</h3>
+                    <div class="engine-card-engine">pdf2docx + PyMuPDF + ReportLab</div>
+                    <p>Ispezione vettoriale di glifi, tabelle e margini per ricostruire l'albero XML WordprocessingML nativo (.docx). Rastering pagine a 300 DPI ed esportazione tipografica.</p>
+                    <div class="format-tags">
+                        <span class="format-tag">PDF ➔ DOCX</span><span class="format-tag">DOCX ➔ PDF</span>
+                        <span class="format-tag">PDF ➔ PNG/JPG (300 DPI)</span><span class="format-tag">TXT ➔ PDF</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Confronto Tecnico -->
+        <section class="comparison-section" id="confronto">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Perché una semplice rinomina non funziona?</h2>
+                    <p>I formati di file contengono strutture binarie profondamente diverse. Cambiare il nome estensione produce solo file illeggibili o corrotti.</p>
+                </div>
+
+                <div class="comparison-cards">
+                    <div class="comp-card bad">
+                        <h3>❌ Rinominare l'estensione (Finta conversione)</h3>
+                        <ul class="comp-list">
+                            <li>⚠️ <strong>Header binario errato:</strong> Un MP4 rinominato in .mp3 contiene ancora gli Atom di sincronizzazione video, mandando in errore i lettori audio.</li>
+                            <li>⚠️ <strong>Crash di visualizzazione:</strong> Un file PNG a 32-bit trasparente rinominato in .jpg corrompe i visualizzatori perché JPEG non supporta il canale Alfa.</li>
+                            <li>⚠️ <strong>Excel illeggibile:</strong> Un file CSV è testo puro; rinominarlo in .xlsx non genera l'archivio compresso ZIP OpenXML richiesto da Microsoft Office.</li>
+                        </ul>
+                    </div>
+
+                    <div class="comp-card good">
+                        <h3>✅ Convertio Desktop (Vera ricodifica)</h3>
+                        <ul class="comp-list">
+                            <li>✨ <strong>Demuxing & Decoding:</strong> Scompatta i flussi e decodifica i dati in matrici e campioni non compressi in RAM.</li>
+                            <li>✨ <strong>Compositing & Resampling:</strong> Applica filtri cromatici, campionamento PCM a virgola mobile, o ricostruzione XML tabelle.</li>
+                            <li>✨ <strong>Serializzazione conforme:</strong> Ricodifica da zero scrivendo l'header binario autentico e certificato dal consorzio del formato.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guida di Avvio Rapido Multi-Piattaforma -->
+        <section class="install-section" id="installazione">
+            <div class="section-header">
+                <h2>Avvio Rapido & Portabilità</h2>
+                <p>Nessun installer invasivo. Basta clonare o scaricare la cartella e avviare il launcher nativo del tuo sistema operativo.</p>
+            </div>
+
+            <div class="os-tabs">
+                <button class="os-tab-btn active" onclick="switchOsTab('win')">🪟 Windows</button>
+                <button class="os-tab-btn" onclick="switchOsTab('mac')">🍎 macOS (Apple Silicon & Intel)</button>
+                <button class="os-tab-btn" onclick="switchOsTab('linux')">🐧 Linux (Ubuntu / Fedora / Arch)</button>
+            </div>
+
+            <!-- Tab Windows -->
+            <div class="os-content active" id="tab-win">
+                <h3 style="margin-bottom: 8px;">Avvio su Windows (10 / 11)</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Fai doppio clic sul file batch oppure avvialo da terminale CMD/PowerShell:</p>
+                <div class="terminal-block">
+                    run.bat
+                </div>
+                <p style="font-size: 0.9rem; color: #a6adc8;">
+                    <strong>Portabilità automatica:</strong> Se sul PC è presente solo Python di base, il programma avvia un bootstrapper con 1-click installer per le librerie e scarica automaticamente FFmpeg portable in locale.
+                </p>
+            </div>
+
+            <!-- Tab macOS -->
+            <div class="os-content" id="tab-mac">
+                <h3 style="margin-bottom: 8px;">Avvio su macOS (M1/M2/M3/M4 & Intel)</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Rendi eseguibile lo script di avvio ed eseguilo dal Terminale:</p>
+                <div class="terminal-block">
+                    chmod +x run.sh<br>
+                    ./run.sh
+                </div>
+                <p style="font-size: 0.9rem; color: #a6adc8;">
+                    <strong>Rilevamento Homebrew & Apple Silicon:</strong> Riconosce automaticamente <code>/opt/homebrew/bin/ffmpeg</code> su Mac Silicon e <code>/usr/local/bin/ffmpeg</code> su Mac Intel.
+                </p>
+            </div>
+
+            <!-- Tab Linux -->
+            <div class="os-content" id="tab-linux">
+                <h3 style="margin-bottom: 8px;">Avvio su Linux (Debian, Ubuntu, Fedora, Arch)</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Esegui lo script shell nativo per la tua distribuzione:</p>
+                <div class="terminal-block">
+                    chmod +x run.sh<br>
+                    ./run.sh
+                </div>
+                <p style="font-size: 0.9rem; color: #a6adc8;">
+                    <strong>Supporto LibreOffice headless:</strong> Se presente sul sistema, converte automaticamente documenti DOCX in PDF con fedeltà tipografica nativa Linux.
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p><strong>Convertio Desktop</strong> &bull; Progetto Open Source rilasciato sotto Licenza MIT.</p>
+                <p style="margin-top: 8px;">100% Locale &bull; Nessun dato inviato al cloud &bull; Sviluppato in Python</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modale Esplicativa -->
+    <div class="modal-overlay" id="explainModal">
+        <div class="modal-box">
+            <h4 id="modalTitle">Conversione Reale</h4>
+            <div style="background: #11111b; border: 1px solid #313244; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+                <span id="modalCategory" style="color: #89dceb; font-weight: 700; font-size: 0.85rem; display: block; margin-bottom: 4px;">CATEGORIA</span>
+                <span id="modalEngine" style="color: #a6e3a1; font-weight: 600; font-size: 0.8rem; font-family: monospace;">MOTORE REALE</span>
+            </div>
+            <p id="modalBody" style="line-height: 1.5;"></p>
+            <button class="btn-modal-close" onclick="closeModal()">Ho Capito</button>
+        </div>
+    </div>
+
+    <script>
+        function switchOsTab(os) {
+            document.querySelectorAll('.os-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.os-content').forEach(tab => tab.classList.remove('active'));
+
+            if (os === 'win') {
+                event.target.classList.add('active');
+                document.getElementById('tab-win').classList.add('active');
+            } else if (os === 'mac') {
+                event.target.classList.add('active');
+                document.getElementById('tab-mac').classList.add('active');
+            } else if (os === 'linux') {
+                event.target.classList.add('active');
+                document.getElementById('tab-linux').classList.add('active');
+            }
+        }
+
+        function showExplanation(src, dst) {
+            const modal = document.getElementById('explainModal');
+            const title = document.getElementById('modalTitle');
+            const cat = document.getElementById('modalCategory');
+            const eng = document.getElementById('modalEngine');
+            const body = document.getElementById('modalBody');
+
+            if (src === 'mp4' && dst === 'mp3') {
+                title.textContent = "Transcodifica: MP4 ➔ MP3";
+                cat.textContent = "CATEGORIA: AUDIO & VIDEO";
+                eng.textContent = "MOTORE REALE: FFmpeg Subprocess (Codec LAME)";
+                body.textContent = "Demultiplexa il contenitore MP4, scarta lo stream video (-vn), decodifica i pacchetti AAC sorgente in campioni PCM grezzi a virgola mobile e ricodifica nel nuovo stream con l'algoritmo LAME MP3 a 320 kbps. Rinominare il file manterrebbe gli Atom MOOV video rendendolo illeggibile per i lettori hi-fi.";
+            } else if (src === 'heic') {
+                title.textContent = `Decodifica Raster: HEIC ➔ ${dst.toUpperCase()}`;
+                cat.textContent = "CATEGORIA: IMMAGINI RAW";
+                eng.textContent = "MOTORE REALE: Pillow + pillow-heif";
+                body.textContent = `Estrae il flusso compresso HEIF di Apple/Samsung, decodifica la matrice grezza di luminanza/crominanza YUV, la converte in spazio sRGB e ricomprime con la quantizzazione e i filtri nativi di ${dst.toUpperCase()}. Una semplice rinomina non permetterebbe a Windows o browser di aprire il file.`;
+            } else {
+                title.textContent = `Conversione: ${src.toUpperCase()} ➔ ${dst.toUpperCase()}`;
+                cat.textContent = "CATEGORIA: DECISIONAL ENGINE";
+                eng.textContent = "MOTORE REALE: Core Re-encoder";
+                body.textContent = "I flussi binari vengono analizzati, decodificati nella loro forma pura non compressa in RAM e riscritti secondo le specifiche esatte del consorzio del formato target.";
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('explainModal').style.display = 'none';
+        }
+
+        function runSimulation(cardId, btnId, pbarId, statusId) {
+            const btn = document.getElementById(btnId);
+            const pbar = document.getElementById(pbarId);
+            const status = document.getElementById(statusId);
+
+            btn.disabled = true;
+            btn.textContent = "⏳";
+            status.textContent = "In corso: decodifica e ricampionamento...";
+            status.style.color = "#fab387";
+
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 15) + 10;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    pbar.style.width = "100%";
+                    pbar.style.background = "#10b981";
+                    status.textContent = "Completato 100% ✓ (File ricodificato con successo)";
+                    status.style.color = "#34d399";
+                    btn.textContent = "📁";
+                    btn.style.background = "#10b981";
+                    btn.disabled = false;
+                } else {
+                    pbar.style.width = progress + "%";
+                    status.textContent = `Ricodifica stream: ${progress}%...`;
+                }
+            }, 250);
+        }
+
+        function simulateNewFile() {
+            const container = document.getElementById('simCardsContainer');
+            const id = Date.now();
+            const newCard = document.createElement('div');
+            newCard.className = 'sim-file-card';
+            newCard.innerHTML = `
+                <div class="sim-file-top">
+                    <div class="sim-file-info">
+                        <div class="sim-file-icon">📊</div>
+                        <div class="sim-file-meta">
+                            <strong>dati_vendite_2026.csv</strong>
+                            <span>1.2 MB &bull; Tabella Dati UTF-8</span>
+                        </div>
+                    </div>
+                    <div class="sim-controls">
+                        <span style="font-size: 0.85rem; color: #a6adc8;">in</span>
+                        <select class="sim-select" id="target_${id}">
+                            <option value="xlsx">XLSX (Excel)</option>
+                            <option value="json">JSON</option>
+                            <option value="html">HTML</option>
+                            <option value="xml">XML</option>
+                        </select>
+                        <button class="sim-btn-explain" onclick="showExplanation('csv', document.getElementById('target_${id}').value)">💡 Come Funziona</button>
+                        <button class="sim-btn-play" id="btn_${id}" onclick="runSimulation('card_${id}', 'btn_${id}', 'pbar_${id}', 'status_${id}')">▶</button>
+                    </div>
+                </div>
+                <div class="sim-pbar-bg">
+                    <div class="sim-pbar-fill" id="pbar_${id}" style="width: 0%;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #a6adc8;">
+                    <span id="status_${id}">Pronto per la serializzazione OpenXML</span>
+                    <span>Pandas + OpenPyXL</span>
+                </div>
+            `;
+            container.prepend(newCard);
+        }
+    </script>
+</body>
+</html>

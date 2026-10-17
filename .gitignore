@@ -1,0 +1,61 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C-extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Binari locali pesanti (scaricati a runtime tramite il downloader integrato)
+bin/ffmpeg.exe
+bin/ffprobe.exe
+bin/*.zip
+
+# File temporanei di test / output utente
+*.tmp
+*.temp
+test_output.*
+test_data.*
+test_doc.*
+test_video.*
+test_audio.*
+test_extracted.*
+test_img_to_pdf.*
+test_alpha.png
+
+# IDE / Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
