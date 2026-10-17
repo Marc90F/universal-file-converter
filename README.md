@@ -56,6 +56,11 @@ chmod +x run.sh
 ./run.sh
 ```
 
+### 🤖 Su Android (Smartphone e Tablet):
+Scarica il file **`.apk`** direttamente dalla [sezione Releases](https://github.com/Marc90F/universal-file-converter/releases/tag/v1.0.0) ed esegui l'installazione sul dispositivo.
+- Supporta architetture `arm64-v8a` (telefoni moderni), `armeabi-v7a` (32-bit), `x86_64` (emulatori).
+- Compilazione automatica tramite la **GitHub Action CI/CD** inclusa nel repository.
+
 ---
 
 ## 🛡️ Sicurezza & Audit Double-Check
@@ -76,9 +81,14 @@ Il software è stato sottoposto a un'approfondita revisione di sicurezza:
 Convertitore/
 ├── run.bat                     # Launcher rapido per Windows
 ├── run.sh                      # Launcher nativo per macOS e Linux
-├── main.py                     # Entry point con Bootstrapper grafico Tkinter
+├── main.py                     # Entry point Desktop con Bootstrapper grafico Tkinter
+├── buildozer.spec              # Specifiche di packaging Android (ARM64, ARMv7, x86)
 ├── requirements.txt            # Dipendenze dei motori di conversione
 ├── README.md                   # Documentazione completa
+├── .github/workflows/          # CI/CD GitHub Actions
+│   └── build-android.yml       # Compilazione cloud automatica dell'APK Android
+├── android/                    # Porting Mobile per Android
+│   └── main.py                 # Interfaccia Touch Kivy con Scoped Storage
 ├── docs/                       # Sito Web vetrina per GitHub Pages
 │   └── index.html              # Landing page interattiva con simulatore live
 ├── bin/                        # Directory riservata per ffmpeg portatile
@@ -93,7 +103,7 @@ Convertitore/
 │   ├── data_engine.py          # Pandas + OpenPyXL + pure Python fallback
 │   └── doc_engine.py           # pdf2docx + docx2pdf + PyMuPDF + LibreOffice/ReportLab
 └── gui/
-    ├── app.py                  # Interfaccia Convertio Dark Mode
+    ├── app.py                  # Interfaccia Desktop Dark Mode
     ├── file_card.py            # Card interattiva multi-OS (Finder/Explorer/XDG)
     ├── explain_modal.py        # Spiegazione dettagliata della pipeline binaria
     ├── options_modal.py        # Opzioni di compressione, qualità e bitrate

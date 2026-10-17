@@ -761,6 +761,7 @@
                 <div class="platform-chip">🪟 Windows (run.bat)</div>
                 <div class="platform-chip">🍎 macOS M1/M2/M3 & Intel (run.sh)</div>
                 <div class="platform-chip">🐧 Linux Ubuntu/Debian/Fedora/Arch (run.sh)</div>
+                <div class="platform-chip">🤖 Android APK (ARM64, ARMv7, x86)</div>
             </div>
         </section>
 
@@ -969,6 +970,7 @@
                 <button class="os-tab-btn active" onclick="switchOsTab('win')">🪟 Windows</button>
                 <button class="os-tab-btn" onclick="switchOsTab('mac')">🍎 macOS (Apple Silicon & Intel)</button>
                 <button class="os-tab-btn" onclick="switchOsTab('linux')">🐧 Linux (Ubuntu / Fedora / Arch)</button>
+                <button class="os-tab-btn" onclick="switchOsTab('android')">🤖 Android (APK)</button>
             </div>
 
             <!-- Tab Windows -->
@@ -1017,6 +1019,23 @@
                     <strong>Supporto LibreOffice headless:</strong> Se presente sul sistema, converte automaticamente documenti DOCX in PDF con fedeltà tipografica nativa Linux.
                 </p>
             </div>
+
+            <!-- Tab Android -->
+            <div class="os-content" id="tab-android">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+                    <h3 style="margin: 0;">Universal File Converter per Android (APK)</h3>
+                    <a href="https://github.com/Marc90F/universal-file-converter/releases/tag/v1.0.0" target="_blank" class="btn-primary" style="padding: 8px 16px; font-size: 0.9rem; background: #10b981;">🤖 Scarica APK per Android</a>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Pacchetto <strong>.APK</strong> per smartphone e tablet Android (tutte le architetture):</p>
+                <div class="terminal-block">
+                    1. Scarica il file .apk sul tuo smartphone dalla sezione Releases.<br>
+                    2. Tocca il file scaricato per avviare l'installazione.<br>
+                    3. Se richiesto, consenti l'installazione da fonti sconosciute nelle impostazioni del dispositivo.
+                </div>
+                <p style="font-size: 0.9rem; color: #a6adc8;">
+                    <strong>Architetture supportate:</strong> <code>arm64-v8a</code> (tutti gli smartphone moderni a 64-bit), <code>armeabi-v7a</code> (32-bit), <code>x86_64</code> (emulatori Android e Chromebook). Compatibile con Android 7.0 (API 24) fino ad Android 14/15/16 (API 34).
+                </p>
+            </div>
         </section>
 
         <!-- Footer -->
@@ -1055,6 +1074,9 @@
             } else if (os === 'linux') {
                 event.target.classList.add('active');
                 document.getElementById('tab-linux').classList.add('active');
+            } else if (os === 'android') {
+                event.target.classList.add('active');
+                document.getElementById('tab-android').classList.add('active');
             }
         }
 
