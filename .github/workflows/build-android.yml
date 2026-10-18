@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - 'android/**'
+      - 'mobile/**'
       - 'core/**'
       - 'engines/**'
       - 'main.py'

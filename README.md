@@ -101,7 +101,8 @@ Convertitore/
 ├── README.md                   # Documentazione completa
 ├── .github/workflows/          # CI/CD GitHub Actions
 │   └── build-android.yml       # Compilazione cloud automatica dell'APK Android
-├── android/                    # Porting Mobile per Android
+├── mobile/                     # Porting Mobile per Android (Kivy Touch)
+│   ├── __init__.py
 │   └── main.py                 # Interfaccia Touch Kivy con Scoped Storage
 ├── docs/                       # Sito Web vetrina per GitHub Pages
 │   └── index.html              # Landing page interattiva con simulatore live

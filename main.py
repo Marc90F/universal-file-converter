@@ -12,8 +12,12 @@ import sys
 
 # Riconoscimento immediato ambiente Android (Kivy / python-for-android)
 if "ANDROID_ARGUMENT" in os.environ or "ANDROID_BOOTSTRAP" in os.environ or hasattr(sys, "getandroidapilevel") or "PYTHON_SERVICE_ARGUMENT" in os.environ:
-    from android.main import UniversalConverterMobileApp
-    UniversalConverterMobileApp().run()
+    try:
+        from mobile.main import UniversalConverterMobileApp
+        UniversalConverterMobileApp().run()
+    except Exception:
+        import traceback
+        traceback.print_exc()
     sys.exit(0)
 
 def check_gui_available() -> bool:
