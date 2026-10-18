@@ -1,10 +1,15 @@
 # 🔄 Universal File Converter — Convertitore Universale Reale
-### Per Windows, macOS (Apple Silicon & Intel), Linux e Android!
+### Per Windows, macOS (Apple Silicon & Intel), Linux, Android e Google Colab
 
-Un vero convertitore desktop universale ispirato a Convertio, scritto in Python.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Marc90F/universal-file-converter/blob/main/colab/Universal_File_Converter_Colab.ipynb)
+[![GitHub Release](https://img.shields.io/github/v/release/Marc90F/universal-file-converter?color=red&label=Release)](https://github.com/Marc90F/universal-file-converter/releases/tag/v1.0.0)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Website-success)](https://marc90f.github.io/universal-file-converter/)
+
+Un vero convertitore universale ispirato a Convertio, scritto in Python.
 A differenza di script che si limitano a rinominare l'estensione del file, questo software **decodifica realmente i flussi binari non compressi in memoria RAM e li ricodifica da zero** nel nuovo formato con algoritmi dedicati.
 
-🌐 **Sito Web Vetrina Ufficiale**: https://marc90f.github.io/universal-file-converter.
+🌐 **Sito Web Vetrina Ufficiale**: https://marc90f.github.io/universal-file-converter  
+🚀 **Esegui Subito su Google Colab (1-Click)**: [Apri il Notebook Colab](https://colab.research.google.com/github/Marc90F/universal-file-converter/blob/main/colab/Universal_File_Converter_Colab.ipynb)
 
 ---
 
@@ -56,9 +61,15 @@ chmod +x run.sh
 ./run.sh
 ```
 
-### 🤖 Su Android (Smartphone e Tablet):
+### ☁️ Su Google Colab (Cloud & Mobile Browser):
+Puoi eseguire l'intera suite senza installare nulla sul tuo PC o telefono:
+1. Clicca sul badge: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Marc90F/universal-file-converter/blob/main/colab/Universal_File_Converter_Colab.ipynb)
+2. Esegui la cella 1 per installare automaticamente FFmpeg, LibreOffice e i motori Python.
+3. Esegui la cella 2 per avviare l'interfaccia Gradio. Clicca sul link pubblico `https://...gradio.live` per usare l'app dal browser del tuo smartphone (**Android o iPhone**) o da PC!
+
+### 🤖 Su Android (Installazione APK Locale):
 Scarica il file **`.apk`** direttamente dalla [sezione Releases](https://github.com/Marc90F/universal-file-converter/releases/tag/v1.0.0) ed esegui l'installazione sul dispositivo.
-- Supporta architetture `arm64-v8a` (telefoni moderni), `armeabi-v7a` (32-bit), `x86_64` (emulatori).
+- Supporta architetture `arm64-v8a` (telefoni moderni) e `armeabi-v7a` (32-bit).
 - Compilazione automatica tramite la **GitHub Action CI/CD** inclusa nel repository.
 
 ---
@@ -82,7 +93,10 @@ Convertitore/
 ├── run.bat                     # Launcher rapido per Windows
 ├── run.sh                      # Launcher nativo per macOS e Linux
 ├── main.py                     # Entry point Desktop con Bootstrapper grafico Tkinter
-├── buildozer.spec              # Specifiche di packaging Android (ARM64, ARMv7, x86)
+├── colab_app.py                # Interfaccia Web Cloud Gradio per Colab & Mobile
+├── colab/                      # Jupyter Notebook per Google Colab
+│   └── Universal_File_Converter_Colab.ipynb
+├── buildozer.spec              # Specifiche di packaging Android (ARM64, ARMv7)
 ├── requirements.txt            # Dipendenze dei motori di conversione
 ├── README.md                   # Documentazione completa
 ├── .github/workflows/          # CI/CD GitHub Actions
