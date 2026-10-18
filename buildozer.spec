@@ -22,7 +22,10 @@ source.include_patterns = assets/*,core/*,engines/*,gui/*,mobile/*
 source.exclude_exts = spec,pyc,pyo,zip
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-source.exclude_dirs = tests, bin, venv, .venv, .git, .github
+source.exclude_dirs = tests, bin, venv, .venv, .git, .github, colab, docs
+
+# (list) List of exclusions using pattern matching
+source.exclude_patterns = colab_app.py
 
 # (str) Application versioning (method 1)
 version = 1.0.0

@@ -58,16 +58,19 @@ def _format_explanation(src_ext: str, dst_ext: str) -> str:
     expl = get_explanation(src_ext, dst_ext)
     cat = expl.get("category", get_category(src_ext))
     icon = CATEGORY_ICONS.get(cat, "📁")
+    engine = expl.get("engine", "Motore Standard")
+    how_it_works = expl.get("how_it_works", "I flussi vengono decodificati in memoria e ricodificati da zero nel formato target.")
+    why_not_rename = expl.get("why_not_rename", "Rinominare il file corromperebbe la struttura binaria; questa conversione ricostruisce l'intero file nel rispetto degli standard.")
 
     return f"""### {icon} Spiegazione Tecnica ({src_ext.upper()} ➔ {dst_ext.upper()})
 - **Categoria di Conversione:** `{cat}`
-- **Motore Utilizzato:** `{expl.get('engine', 'Motore Standard')}`
+- **Motore Utilizzato:** `{engine}`
 
 #### ⚙️ Come funziona la decodifica/ricodifica reale:
-{expl.get('how_it_works', 'I flussi vengono decodificati in memoria e ricodificati da zero nel formato target.')}
+{how_it_works}
 
 #### 🛡️ Perché non è un semplice cambio di estensione:
-{expl.get('why_not_rename', 'Rinominare il file corromperebbe la struttura binaria; questa conversione ricostruisce l\'intero file nel rispetto degli standard.')}
+{why_not_rename}
 """
 
 
